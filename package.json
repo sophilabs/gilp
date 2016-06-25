@@ -2,11 +2,11 @@
   "name": "gilp",
   "version": "0.0.1",
   "description": "Gulp tasks for git hooks.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "lint": "semistandard *.js",
     "pretest": "npm run lint",
-    "test": "mocha --reporter spec"
+    "test": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec $(find ./test -name *.tests.js) && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "repository": {
     "type": "git",
@@ -36,6 +36,9 @@
     "yargs": "^4.7.1"
   },
   "devDependencies": {
+    "coveralls": "^2.11.9",
+    "istanbul": "^0.4.4",
+    "mocha": "^2.5.3",
     "semistandard": "^8.0.0"
   }
 }

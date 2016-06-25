@@ -20,11 +20,11 @@ function Gilp (gulp) {
   this._gulp = gulp;
   this._installed = [];
   this._gulp.task('gilp-install', function (callback) {
-    fs.readFile(path.join(__dirname, 'hook.js'), 'utf8', function (err, template) {
+    fs.readFile(path.join(__dirname, '../templates/hook.js'), 'utf8', function (err, template) {
       if (err) {
         return callback(err);
       }
-      var directory = path.join(gilp.getBaseDirectory(), '.git', 'hooks');
+      var directory = path.join(gilp.getBaseDirectory(), '.git/hooks');
       var installed = gilp._installed.concat();
       var saveNext = function () {
         var hook = installed.shift();
