@@ -1,6 +1,7 @@
 # Gilp
 
 [![travis][travis-image]][travis-url]
+[![coverage][coveralls-image]][coveralls-url]
 [![npm][npm-image]][npm-url]
 [![downloads][downloads-image]][downloads-url]
 [![js-semistandard-style][semi-image]][semi-url]
@@ -72,3 +73,5 @@ gulp.task('check-commit', function () {
 [downloads-url]: https://npmjs.org/package/gilp
 [semi-image]: https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square
 [semi-url]: https://github.com/Flet/semistandard
+[coveralls-image]: https://img.shields.io/coveralls/sophilabs/gilp.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/github/sophilabs/gilp?branch=master
