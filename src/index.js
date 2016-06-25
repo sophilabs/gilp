@@ -12,7 +12,8 @@ var yargs = require('yargs');
 
 var hooks = [
   'pre-commit',
-  'pre-push'
+  'pre-push',
+  'commit-msg'
 ];
 
 function Gilp (gulp) {
