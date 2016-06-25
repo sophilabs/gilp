@@ -3,6 +3,7 @@
 [![travis][travis-image]][travis-url]
 [![npm][npm-image]][npm-url]
 [![downloads][downloads-image]][downloads-url]
+[![js-semistandard-style][semi-image][semi-url]
 
 Gulp tasks for git hooks.
 
@@ -69,3 +70,5 @@ gulp.task('check-commit', function () {
 [npm-url]: https://npmjs.org/package/gilp
 [downloads-image]: https://img.shields.io/npm/dm/gilp.svg?style=flat-square
 [downloads-url]: https://npmjs.org/package/gilp
+[semi-image]: https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square
+[semi-url]: https://github.com/Flet/semistandard
