@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Gilp by sophilabs</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Gilp</h1>
+        <p>Gulp tasks for git hooks.</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/sophilabs/gilp" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/sophilabs/gilp/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/sophilabs/gilp/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>
+<a id="gilp" class="anchor" href="#gilp" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Gilp</h1>
+
+<p><a href="https://travis-ci.org/sophilabs/gilp"><img src="https://img.shields.io/travis/sophilabs/gilp.svg?style=flat-square" alt="travis"></a>
+<a href="https://coveralls.io/github/sophilabs/gilp?branch=master"><img src="https://img.shields.io/coveralls/sophilabs/gilp.svg?style=flat-square" alt="coverage"></a>
+<a href="https://npmjs.org/package/gilp"><img src="https://img.shields.io/npm/v/gilp.svg?style=flat-square" alt="npm"></a>
+<a href="https://npmjs.org/package/gilp"><img src="https://img.shields.io/npm/dm/gilp.svg?style=flat-square" alt="downloads"></a>
+<a href="https://github.com/Flet/semistandard"><img src="https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square" alt="js-semistandard-style"></a></p>
+
+<p>Gulp tasks for git hooks.</p>
+
+<h2>
+<a id="define-a-hook" class="anchor" href="#define-a-hook" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Define a hook</h2>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> gulp <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>gulp<span class="pl-pds">'</span></span>);
+<span class="pl-k">var</span> eslint <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>gulp-eslint<span class="pl-pds">'</span></span>);
+<span class="pl-k">var</span> gilp <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>gilp<span class="pl-pds">'</span></span>)(gulp);
+
+<span class="pl-smi">gilp</span>.<span class="pl-en">hook</span>(<span class="pl-s"><span class="pl-pds">'</span>pre-commit<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> () {
+  <span class="pl-k">return</span> <span class="pl-smi">gilp</span>.<span class="pl-en">srcFromStaged</span>([<span class="pl-s"><span class="pl-pds">'</span>**/*.js<span class="pl-pds">'</span></span>]) 
+    .<span class="pl-en">pipe</span>(<span class="pl-en">eslint</span>())
+    .<span class="pl-en">pipe</span>(<span class="pl-smi">eslint</span>.<span class="pl-en">failAfterError</span>());
+});</pre></div>
+
+<h2>
+<a id="install-defined-hooks-githooks" class="anchor" href="#install-defined-hooks-githooks" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install defined hooks (.git/hooks)</h2>
+
+<div class="highlight highlight-source-shell"><pre>npm run gulp gilp-install</pre></div>
+
+<h2>
+<a id="get-a-stream-of-files-to-be-committed" class="anchor" href="#get-a-stream-of-files-to-be-committed" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get a stream of files to be committed</h2>
+
+<div class="highlight highlight-source-js"><pre>  <span class="pl-smi">gilp</span>.<span class="pl-en">srcFromStaged</span>();</pre></div>
+
+<h2>
+<a id="get-a-stream-of-files-from-a-commit" class="anchor" href="#get-a-stream-of-files-from-a-commit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get a stream of files from a commit</h2>
+
+<div class="highlight highlight-source-js"><pre>  <span class="pl-smi">gilp</span>.<span class="pl-en">srcFromCommit</span>(<span class="pl-s"><span class="pl-pds">'</span>e3bca34<span class="pl-pds">'</span></span>);</pre></div>
+
+<h2>
+<a id="read-git-hooks-parameters" class="anchor" href="#read-git-hooks-parameters" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Read git hook's parameters</h2>
+
+<div class="highlight highlight-source-js"><pre>  <span class="pl-smi">gilp</span>.<span class="pl-en">getArgs</span>();</pre></div>
+
+<h2>
+<a id="get-current-branch" class="anchor" href="#get-current-branch" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get current branch</h2>
+
+<div class="highlight highlight-source-js"><pre>  <span class="pl-smi">gilp</span>.<span class="pl-en">getBranch</span>();</pre></div>
+
+<h2>
+<a id="run-a-task-on-the-ci-to-check-the-commit" class="anchor" href="#run-a-task-on-the-ci-to-check-the-commit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Run a task on the CI to check the commit</h2>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> gulp <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>gulp<span class="pl-pds">'</span></span>);
+<span class="pl-k">var</span> eslint <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>gulp-eslint<span class="pl-pds">'</span></span>);
+<span class="pl-k">var</span> gilp <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>gilp<span class="pl-pds">'</span></span>)(gulp);
+
+<span class="pl-smi">gulp</span>.<span class="pl-en">task</span>(<span class="pl-s"><span class="pl-pds">'</span>check-commit<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> () {
+  <span class="pl-k">return</span> <span class="pl-smi">gilp</span>.<span class="pl-en">srcFromCommit</span>(<span class="pl-s"><span class="pl-pds">'</span>e3bca34<span class="pl-pds">'</span></span>, [<span class="pl-s"><span class="pl-pds">'</span>**/*.js<span class="pl-pds">'</span></span>]) 
+    .<span class="pl-en">pipe</span>(<span class="pl-en">eslint</span>())
+    .<span class="pl-en">pipe</span>(<span class="pl-smi">eslint</span>.<span class="pl-en">failAfterError</span>());
+});</pre></div>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/sophilabs">sophilabs</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
