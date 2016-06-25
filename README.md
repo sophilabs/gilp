@@ -3,7 +3,7 @@
 [![travis][travis-image]][travis-url]
 [![npm][npm-image]][npm-url]
 [![downloads][downloads-image]][downloads-url]
-[![js-semistandard-style][semi-image][semi-url]
+[![js-semistandard-style][semi-image]][semi-url]
 
 Gulp tasks for git hooks.
 
