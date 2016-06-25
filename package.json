@@ -4,7 +4,9 @@
   "description": "Gulp tasks for git hooks.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "lint": "semistandard *.js",
+    "pretest": "npm run lint",
+    "test": "mocha --reporter spec"
   },
   "repository": {
     "type": "git",
@@ -20,5 +22,17 @@
   "bugs": {
     "url": "https://github.com/sophilabs/gilp/issues"
   },
-  "homepage": "https://github.com/sophilabs/gilp#readme"
+  "homepage": "https://github.com/sophilabs/gilp#readme",
+  "dependencies": {
+    "gulp-filter": "^4.0.0",
+    "gulp-if": "^2.0.1",
+    "stream-array": "^1.1.2",
+    "strip-bom-buf": "^1.0.0",
+    "through2": "^2.0.1",
+    "vinyl": "^1.1.1",
+    "yargs": "^4.7.1"
+  },
+  "devDependencies": {
+    "semistandard": "^8.0.0"
+  }
 }
