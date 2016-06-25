@@ -28,6 +28,21 @@ gilp.hook('pre-commit', function () {
 npm run gulp gilp-install
 ```
 
+To auto-install the hooks after `npm install` add in your `package.json` the 
+following `postinstall` command:
+
+```json
+{
+  ...
+  "scripts": {
+    ...
+    "gulp": "gulp",
+    "postinstall": "gulp gilp-install"
+  },
+  ...
+}
+```
+
 ##  Get a stream of files to be committed
 
 ```javascript
