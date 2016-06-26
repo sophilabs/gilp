@@ -8,15 +8,15 @@
 
 Gulp tasks for git hooks.
 
-# Installation
+## Installation
 
 ```bash
 npm install gilp
 ```
 
-# Usage
+## Usage
 
-## Define a hook
+### Define a hook
 
 ```javascript
 var gulp = require('gulp');
@@ -30,7 +30,7 @@ gilp.hook('pre-commit', function () {
 });
 ```
 
-## Install defined hooks (.git/hooks)
+### Install defined hooks (.git/hooks)
 
 ```bash
 npm run gulp gilp-install
@@ -51,30 +51,30 @@ following `postinstall` command:
 }
 ```
 
-##  Get a stream of files to be committed
+###  Get a stream of files to be committed
 
 ```javascript
   gilp.srcFromStaged();
 ```
-##  Get a stream of files from a commit
+###  Get a stream of files from a commit
 
 ```javascript
   gilp.srcFromCommit('e3bca34');
 ```
 
-## Read git hook's parameters
+### Read git hook's parameters
 
 ```javascript
   gilp.getArgs();
 ```
 
-## Get current branch
+### Get current branch
 
 ```javascript
   gilp.getBranch();
 ```
 
-## Run a task on the CI to check the commit
+### Run a task on the CI to check the commit
 
 ```javascript
 var gulp = require('gulp');
@@ -87,12 +87,12 @@ gulp.task('check-commit', function () {
     .pipe(eslint.failAfterError());
 });
 ```
-# License
+## License
 
 Gilp is Copyright (c) 2016 sophilabs, inc. It is free software, and may be
 redistributed under the terms specified in the [license] file.
 
-# About
+## About
 
 [![sophilabs][sophilabs-image]][sophilabs-url]
 
