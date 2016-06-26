@@ -8,6 +8,14 @@
 
 Gulp tasks for git hooks.
 
+# Installation
+
+```bash
+npm install gilp
+```
+
+# Usage
+
 ## Define a hook
 
 ```javascript
@@ -79,6 +87,10 @@ gulp.task('check-commit', function () {
     .pipe(eslint.failAfterError());
 });
 ```
+
+# License
+
+See `LICENSE`.
 
 [travis-image]: https://img.shields.io/travis/sophilabs/gilp.svg?style=flat-square
 [travis-url]: https://travis-ci.org/sophilabs/gilp
