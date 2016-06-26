@@ -87,12 +87,12 @@ gulp.task('check-commit', function () {
     .pipe(eslint.failAfterError());
 });
 ```
-## License
+# License
 
 Gilp is Copyright (c) 2016 sophilabs, inc. It is free software, and may be
 redistributed under the terms specified in the [license] file.
 
-## About
+# About
 
 [![sophilabs][sophilabs-image]][sophilabs-url]
 
