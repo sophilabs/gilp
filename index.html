@@ -44,14 +44,22 @@
 
 <p><a href="https://travis-ci.org/sophilabs/gilp"><img src="https://img.shields.io/travis/sophilabs/gilp.svg?style=flat-square" alt="travis"></a>
 <a href="https://coveralls.io/github/sophilabs/gilp?branch=master"><img src="https://img.shields.io/coveralls/sophilabs/gilp.svg?style=flat-square" alt="coverage"></a>
-<a href="https://npmjs.org/package/gilp"><img src="https://img.shields.io/npm/v/gilp.svg?style=flat-square" alt="npm"></a>
+<a href="https://npmjs.org/packge/gilp"><img src="https://img.shields.io/npm/v/gilp.svg?style=flat-square" alt="npm"></a>
 <a href="https://npmjs.org/package/gilp"><img src="https://img.shields.io/npm/dm/gilp.svg?style=flat-square" alt="downloads"></a>
 <a href="https://github.com/Flet/semistandard"><img src="https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square" alt="js-semistandard-style"></a></p>
 
 <p>Gulp tasks for git hooks.</p>
 
 <h2>
-<a id="define-a-hook" class="anchor" href="#define-a-hook" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Define a hook</h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<div class="highlight highlight-source-shell"><pre>npm install gilp</pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="define-a-hook" class="anchor" href="#define-a-hook" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Define a hook</h3>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> gulp <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>gulp<span class="pl-pds">'</span></span>);
 <span class="pl-k">var</span> eslint <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>gulp-eslint<span class="pl-pds">'</span></span>);
@@ -63,33 +71,46 @@
     .<span class="pl-en">pipe</span>(<span class="pl-smi">eslint</span>.<span class="pl-en">failAfterError</span>());
 });</pre></div>
 
-<h2>
-<a id="install-defined-hooks-githooks" class="anchor" href="#install-defined-hooks-githooks" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install defined hooks (.git/hooks)</h2>
+<h3>
+<a id="install-defined-hooks-githooks" class="anchor" href="#install-defined-hooks-githooks" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install defined hooks (.git/hooks)</h3>
 
 <div class="highlight highlight-source-shell"><pre>npm run gulp gilp-install</pre></div>
 
-<h2>
-<a id="get-a-stream-of-files-to-be-committed" class="anchor" href="#get-a-stream-of-files-to-be-committed" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get a stream of files to be committed</h2>
+<p>To auto-install the hooks after <code>npm install</code> add in your <code>package.json</code> the 
+following <code>postinstall</code> command:</p>
+
+<div class="highlight highlight-source-json"><pre>{
+  <span class="pl-ii">...</span>
+  <span class="pl-s"><span class="pl-pds">"</span>scripts<span class="pl-pds">"</span></span>: {
+    <span class="pl-ii">...</span>
+    <span class="pl-s"><span class="pl-pds">"</span>gulp<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>gulp<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>postinstall<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>gulp gilp-install<span class="pl-pds">"</span></span>
+  },
+  <span class="pl-ii">...</span>
+}</pre></div>
+
+<h3>
+<a id="get-a-stream-of-files-to-be-committed" class="anchor" href="#get-a-stream-of-files-to-be-committed" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get a stream of files to be committed</h3>
 
 <div class="highlight highlight-source-js"><pre>  <span class="pl-smi">gilp</span>.<span class="pl-en">srcFromStaged</span>();</pre></div>
 
-<h2>
-<a id="get-a-stream-of-files-from-a-commit" class="anchor" href="#get-a-stream-of-files-from-a-commit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get a stream of files from a commit</h2>
+<h3>
+<a id="get-a-stream-of-files-from-a-commit" class="anchor" href="#get-a-stream-of-files-from-a-commit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get a stream of files from a commit</h3>
 
 <div class="highlight highlight-source-js"><pre>  <span class="pl-smi">gilp</span>.<span class="pl-en">srcFromCommit</span>(<span class="pl-s"><span class="pl-pds">'</span>e3bca34<span class="pl-pds">'</span></span>);</pre></div>
 
-<h2>
-<a id="read-git-hooks-parameters" class="anchor" href="#read-git-hooks-parameters" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Read git hook's parameters</h2>
+<h3>
+<a id="read-git-hooks-parameters" class="anchor" href="#read-git-hooks-parameters" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Read git hook's parameters</h3>
 
 <div class="highlight highlight-source-js"><pre>  <span class="pl-smi">gilp</span>.<span class="pl-en">getArgs</span>();</pre></div>
 
-<h2>
-<a id="get-current-branch" class="anchor" href="#get-current-branch" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get current branch</h2>
+<h3>
+<a id="get-current-branch" class="anchor" href="#get-current-branch" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get current branch</h3>
 
 <div class="highlight highlight-source-js"><pre>  <span class="pl-smi">gilp</span>.<span class="pl-en">getBranch</span>();</pre></div>
 
-<h2>
-<a id="run-a-task-on-the-ci-to-check-the-commit" class="anchor" href="#run-a-task-on-the-ci-to-check-the-commit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Run a task on the CI to check the commit</h2>
+<h3>
+<a id="run-a-task-on-the-ci-to-check-the-commit" class="anchor" href="#run-a-task-on-the-ci-to-check-the-commit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Run a task on the CI to check the commit</h3>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> gulp <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>gulp<span class="pl-pds">'</span></span>);
 <span class="pl-k">var</span> eslint <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>gulp-eslint<span class="pl-pds">'</span></span>);
@@ -100,6 +121,20 @@
     .<span class="pl-en">pipe</span>(<span class="pl-en">eslint</span>())
     .<span class="pl-en">pipe</span>(<span class="pl-smi">eslint</span>.<span class="pl-en">failAfterError</span>());
 });</pre></div>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>Gilp is Copyright (c) 2016 sophilabs, inc. It is free software, and may be
+redistributed under the terms specified in the <a href="/LICENSE">license</a> file.</p>
+
+<h2>
+<a id="about" class="anchor" href="#about" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>About</h2>
+
+<p><a href="https://sophilabs.co"><img src="https://res.cloudinary.com/jsconfuy/image/upload/c_pad,f_auto,h_200,w_200,e_trim/v1426608244/xuwbunompvfjaxuazlwo.png" alt="sophilabs"></a></p>
+
+<p>Gilp is maintained and funded by sophilabs, inc. The names and logos for
+sophilabs are trademarks of sophilabs, inc.</p>
       </section>
       <footer>
         <p>Project maintained by <a href="https://github.com/sophilabs">sophilabs</a></p>
