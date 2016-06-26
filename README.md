@@ -99,7 +99,7 @@ redistributed under the terms specified in the [license] file.
 Gilp is maintained and funded by sophilabs, inc. The names and logos for
 sophilabs are trademarks of sophilabs, inc.
 
-[sophilabs-image]: https://res.cloudinary.com/jsconfuy/image/upload/c_pad,f_auto,h_400,w_400/v1426608244/xuwbunompvfjaxuazlwo.png
+[sophilabs-image]: https://res.cloudinary.com/jsconfuy/image/upload/c_pad,f_auto,h_400,w_40/e_trim/v1426608244/xuwbunompvfjaxuazlwo.png
 [sophilabs-url]: https://sophilabs.co
 [license]: /LICENSE
 [travis-image]: https://img.shields.io/travis/sophilabs/gilp.svg?style=flat-square
