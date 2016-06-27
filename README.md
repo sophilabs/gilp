@@ -6,6 +6,8 @@
 [![downloads][downloads-image]][downloads-url]
 [![js-semistandard-style][semi-image]][semi-url]
 [![license][license-image]][license-url]
+[![dependencies][dependencies-image]][dependencies-url]
+[![dev-dependencies][dev-dependencies-image]][dev-dependencies-url]
 
 Gulp tasks for git hooks.
 
@@ -115,3 +117,7 @@ sophilabs are trademarks of sophilabs, inc.
 [coveralls-url]: https://coveralls.io/github/sophilabs/gilp?branch=master
 [license-image]: https://img.shields.io/github/license/sophilabs/gilp.svg?style=flat-square
 [license-url]: /LICENSE
+[dependencies-image]: https://david-dm.org/sophilabs/gilp.svg?style=flat-square
+[dependencies-url]: https://david-dm.org/sophilabs/gilp
+[dev-dependencies-image]: https://david-dm.org/sophilabs/gilp/dev-status.svg?style=flat-square
+[dev-dependencies-url]: https://david-dm.org/sophilabs/gilp#info=devDependencies
