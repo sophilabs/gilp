@@ -78,6 +78,7 @@ Gilp.prototype.getArgs = function () {
 Gilp.prototype._getStream = function (objectFormat, paths, glob) {
   return streamify(paths)
     .pipe(through2.obj(function (path, enc, callback) {
+
       var contents = execSync(util.format('git cat-file blob %s', util.format(objectFormat, path)));
       var file = new File({
         gilp: true,
@@ -96,7 +97,8 @@ Gilp.prototype.srcFromStaged = function (glob) {
     execSync('git diff --cached --name-only --diff-filter=ACM')
       .toString()
       .trim()
-      .split('\n'),
+      .split('\n')
+      .filter(function (path) { return path !== '' }),
     glob
   );
 };
@@ -107,7 +109,8 @@ Gilp.prototype.srcFromCommit = function (commit, glob) {
     execSync(util.format('git diff --name-only --diff-filter=ACM %s^ %s', commit, commit))
       .toString()
       .trim()
-      .split('\n'),
+      .split('\n')
+      .filter(function (path) { return path !== '' }),
     glob
   );
 };
