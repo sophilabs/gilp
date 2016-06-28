@@ -29,7 +29,7 @@
   "dependencies": {
     "gulp-filter": "^4.0.0",
     "gulp-if": "^2.0.1",
-    "gilp-util": "^0.0.5",
+    "gilp-util": "^0.0.6",
     "stream-array": "^1.1.2",
     "strip-bom-buf": "^1.0.0",
     "through2": "^2.0.1",
