@@ -65,18 +65,6 @@ following `postinstall` command:
   gilp.srcFromCommit('e3bca34');
 ```
 
-### Read git hook's parameters
-
-```javascript
-  gilp.getArgs();
-```
-
-### Get current branch
-
-```javascript
-  gilp.getBranch();
-```
-
 ### Run a task on the CI to check the commit
 
 ```javascript

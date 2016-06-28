@@ -1,8 +1,8 @@
 {
   "name": "gilp",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Gulp tasks for git hooks.",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "lint": "semistandard *.js",
     "pretest": "npm run lint",
@@ -29,11 +29,11 @@
   "dependencies": {
     "gulp-filter": "^4.0.0",
     "gulp-if": "^2.0.1",
+    "gilp-util": "^0.0.5",
     "stream-array": "^1.1.2",
     "strip-bom-buf": "^1.0.0",
     "through2": "^2.0.1",
-    "vinyl": "^1.1.1",
-    "yargs": "^4.7.1"
+    "vinyl": "^1.1.1"
   },
   "devDependencies": {
     "coveralls": "^2.11.9",
