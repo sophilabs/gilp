@@ -1,4 +1,4 @@
-var gilp = require('../src');
+var gilp = require('../lib');
 
 describe('Gilp module', function () {
 
