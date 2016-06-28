@@ -19,6 +19,9 @@ npm install gilp
 
 ## Usage
 
+You can use any [gulp](https://www.npmjs.com/browse/keyword/gulpplugin) or 
+[gilp](https://www.npmjs.com/browse/keyword/gilpplugin) plugin.
+
 ### Define a hook
 
 ```javascript
@@ -59,6 +62,7 @@ following `postinstall` command:
 ```javascript
   gilp.srcFromStaged();
 ```
+
 ###  Get a stream of files from a commit
 
 ```javascript
@@ -78,6 +82,7 @@ gulp.task('check-commit', function () {
     .pipe(eslint.failAfterError());
 });
 ```
+
 ## License
 
 Gilp is Copyright (c) 2016 sophilabs, inc. It is free software, and may be
