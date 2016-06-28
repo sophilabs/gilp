@@ -46,7 +46,10 @@
 <a href="https://coveralls.io/github/sophilabs/gilp?branch=master"><img src="https://img.shields.io/coveralls/sophilabs/gilp.svg?style=flat-square" alt="coverage"></a>
 <a href="https://npmjs.org/packge/gilp"><img src="https://img.shields.io/npm/v/gilp.svg?style=flat-square" alt="npm"></a>
 <a href="https://npmjs.org/package/gilp"><img src="https://img.shields.io/npm/dm/gilp.svg?style=flat-square" alt="downloads"></a>
-<a href="https://github.com/Flet/semistandard"><img src="https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square" alt="js-semistandard-style"></a></p>
+<a href="https://github.com/Flet/semistandard"><img src="https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square" alt="js-semistandard-style"></a>
+<a href="/LICENSE"><img src="https://img.shields.io/github/license/sophilabs/gilp.svg?style=flat-square" alt="license"></a>
+<a href="https://david-dm.org/sophilabs/gilp"><img src="https://david-dm.org/sophilabs/gilp.svg?style=flat-square" alt="dependencies"></a>
+<a href="https://david-dm.org/sophilabs/gilp#info=devDependencies"><img src="https://david-dm.org/sophilabs/gilp/dev-status.svg?style=flat-square" alt="dev-dependencies"></a></p>
 
 <p>Gulp tasks for git hooks.</p>
 
@@ -57,6 +60,9 @@
 
 <h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>You can use any <a href="https://www.npmjs.com/browse/keyword/gulpplugin">gulp</a> or 
+<a href="https://www.npmjs.com/browse/keyword/gilpplugin">gilp</a> plugin.</p>
 
 <h3>
 <a id="define-a-hook" class="anchor" href="#define-a-hook" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Define a hook</h3>
@@ -79,14 +85,14 @@
 <p>To auto-install the hooks after <code>npm install</code> add in your <code>package.json</code> the 
 following <code>postinstall</code> command:</p>
 
-<div class="highlight highlight-source-json"><pre>{
-  <span class="pl-ii">...</span>
-  <span class="pl-s"><span class="pl-pds">"</span>scripts<span class="pl-pds">"</span></span>: {
-    <span class="pl-ii">...</span>
-    <span class="pl-s"><span class="pl-pds">"</span>gulp<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>gulp<span class="pl-pds">"</span></span>,
-    <span class="pl-s"><span class="pl-pds">"</span>postinstall<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>gulp gilp-install<span class="pl-pds">"</span></span>
+<div class="highlight highlight-source-js"><pre>{
+  <span class="pl-c">// ...</span>
+  <span class="pl-s"><span class="pl-pds">"</span>scripts<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-c">// ...</span>
+    <span class="pl-s"><span class="pl-pds">"</span>gulp<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>gulp<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>postinstall<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>gulp gilp-install<span class="pl-pds">"</span></span>
   },
-  <span class="pl-ii">...</span>
+  <span class="pl-c">// ...</span>
 }</pre></div>
 
 <h3>
@@ -98,16 +104,6 @@ following <code>postinstall</code> command:</p>
 <a id="get-a-stream-of-files-from-a-commit" class="anchor" href="#get-a-stream-of-files-from-a-commit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get a stream of files from a commit</h3>
 
 <div class="highlight highlight-source-js"><pre>  <span class="pl-smi">gilp</span>.<span class="pl-en">srcFromCommit</span>(<span class="pl-s"><span class="pl-pds">'</span>e3bca34<span class="pl-pds">'</span></span>);</pre></div>
-
-<h3>
-<a id="read-git-hooks-parameters" class="anchor" href="#read-git-hooks-parameters" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Read git hook's parameters</h3>
-
-<div class="highlight highlight-source-js"><pre>  <span class="pl-smi">gilp</span>.<span class="pl-en">getArgs</span>();</pre></div>
-
-<h3>
-<a id="get-current-branch" class="anchor" href="#get-current-branch" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get current branch</h3>
-
-<div class="highlight highlight-source-js"><pre>  <span class="pl-smi">gilp</span>.<span class="pl-en">getBranch</span>();</pre></div>
 
 <h3>
 <a id="run-a-task-on-the-ci-to-check-the-commit" class="anchor" href="#run-a-task-on-the-ci-to-check-the-commit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Run a task on the CI to check the commit</h3>
