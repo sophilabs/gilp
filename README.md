@@ -9,12 +9,35 @@
 [![dependencies][dependencies-image]][dependencies-url]
 [![dev-dependencies][dev-dependencies-image]][dev-dependencies-url]
 
-Gulp tasks for git hooks.
+Git has a lot of hooks for client and server side but the most used and known 
+hook is pre-commit, where you can run some validations (like linters) and cancel 
+a commit if something fails. Gilp is a tool to define (using gulp tasks), install 
+and run hooks.
+
+## Why gilp over gulp?
+
+There are 2 main reasons:
+
+- The regular pre-commit hook managers run using the local file's content instead 
+  of git staged content. Gulp comes with `vinyl`, a virtual file format where we 
+  can create an in-memory version of a file to use as content for the tasks. Like 
+  `gulp.src`, we created a new stream provider for that: `srcFromStaged`. If we 
+  need to run the same tools but over a `commit`, `branch` or `tag` instead 
+  (e.g. in a CI), you can do it using `srcFromCommit` without a `checkout`.
+
+- Gulp is plenty of plugins ready to use, 
+  [just check it](https://www.npmjs.com/browse/keyword/gulpplugin).
+
+## Yarn, please.
+
+We recommend to use `yarn` instead of `npm` because the error report is less verbose 
+when `gulp` returns a non-zero code (on error) so we can focus on the "real" error.
+
 
 ## Installation
 
 ```bash
-npm install gilp
+yarn install gilp
 ```
 
 ## Usage
@@ -36,13 +59,25 @@ gilp.hook('pre-commit', function () {
 });
 ```
 
+**  Get a stream of files to be committed: **
+
+```javascript
+  gilp.srcFromStaged();
+```
+
+**  Get a stream of files from a commit: **
+
+```javascript
+  gilp.srcFromCommit('e3bca34');
+```
+
 ### Install defined hooks (.git/hooks)
 
 ```bash
-npm run gulp gilp-install
+yarn run gulp gilp-install
 ```
 
-To auto-install the hooks after `npm install` add in your `package.json` the 
+To auto-install the hooks after `yarn` installation, add in your `package.json` the 
 following `postinstall` command:
 
 ```javascript
@@ -55,18 +90,6 @@ following `postinstall` command:
   },
   // ...
 }
-```
-
-###  Get a stream of files to be committed
-
-```javascript
-  gilp.srcFromStaged();
-```
-
-###  Get a stream of files from a commit
-
-```javascript
-  gilp.srcFromCommit('e3bca34');
 ```
 
 ### Run a task on the CI to check the commit
