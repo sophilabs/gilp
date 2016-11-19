@@ -37,7 +37,7 @@ when `gulp` returns a non-zero code (on error) so we can focus on the "real" err
 ## Installation
 
 ```bash
-yarn install gilp
+yarn add --dev gilp
 ```
 
 ## Usage
