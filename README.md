@@ -106,6 +106,11 @@ gulp.task('check-commit', function () {
 });
 ```
 
+## Example
+
+See full working [example](examples/full.js).
+
+
 ## License
 
 Gilp is Copyright (c) 2016 sophilabs, inc. It is free software, and may be
