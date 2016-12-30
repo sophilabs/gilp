@@ -1,17 +1,17 @@
 'use strict';
-const  gulp = require('gulp');
-const  filter = require('gulp-filter');
-const  combiner = require('stream-combiner2').obj;
-const  gilp = require('gilp')(gulp);
-const  print = require('gulp-print');
+const gulp = require('gulp');
+const filter = require('gulp-filter');
+const combiner = require('stream-combiner2').obj;
+const gilp = require('gilp')(gulp);
+const print = require('gulp-print');
 
-const  eslint = require('gulp-eslint');
-const  flake8 = require('gulp-flake8');
-const  mergeConflict = require('gilp-merge-conflict');
-const  checkCommit = require('gilp-check-commit');
-const  checkBranchName = require('gilp-check-branch-name');
-const  checkGrep = require('gulp-check-grep');
-const  lintFilepath = require('gulp-lint-filepath');
+const eslint = require('gulp-eslint');
+const flake8 = require('gulp-flake8');
+const mergeConflict = require('gilp-merge-conflict');
+const checkCommit = require('gilp-check-commit');
+const checkBranchName = require('gilp-check-branch-name');
+const checkGrep = require('gulp-check-grep');
+const filenameHint = require('gulp-filename-hint');
 
 function js() {
   var src = filter([
@@ -23,8 +23,7 @@ function js() {
   return combiner(
     src,
     print(),
-    lintFilepath({'file-name': [/(^|\/)[a-z0-9\.-]+\.js$/]}),
-    lintFilepath.reporter(),
+    filenameHint({regExp: /(^|\/)[a-z0-9\.-]+\.js$/}),
     eslint(),
     eslint.format(),
     eslint.failAfterError(),
@@ -40,8 +39,7 @@ function py() {
   return combiner(
     src,
     print(),
-    lintFilepath({'file-name': [/(^|\/)[a-z_0-9]+\.py$/]}),
-    lintFilepath.reporter(),
+    filenameHint({regExp: /(^|\/)[a-z_0-9]+\.py$/}),
     flake8('.flake8'),
     flake8.failOnError(),
     checkGrep(/datetime\.now\(\)/g, {message: 'Replace datetime.now by timezone.now'}),
@@ -57,8 +55,7 @@ function html() {
   return combiner(
     src,
     print(),
-    lintFilepath({'file-name': [/(^|\/)[a-z0-9\-]+\.html$/]}),
-    lintFilepath.reporter(),
+    filenameHint({regExp: /(^|\/)[a-z0-9\-]+\.html$/}),
     checkGrep(/{\%\s+load\s+i18n\s+\%\}/g, {message: 'Remove i18n'}),
     checkGrep(/\{\%\s+trans\s+[^%]+/g, {message: 'Remove trans tags'}),
     checkGrep(/\{\%\s+block\s+[a-z0-9_]*[A-Z\-]+[a-z0-9_]*/g, {message: 'Use snake_case for block tags'}),
