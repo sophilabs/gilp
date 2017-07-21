@@ -129,7 +129,7 @@ sophilabs are trademarks of sophilabs, inc.
 [travis-image]: https://img.shields.io/travis/sophilabs/gilp.svg?style=flat-square
 [travis-url]: https://travis-ci.org/sophilabs/gilp
 [npm-image]: https://img.shields.io/npm/v/gilp.svg?style=flat-square
-[npm-url]: https://npmjs.org/packge/gilp
+[npm-url]: https://npmjs.org/package/gilp
 [downloads-image]: https://img.shields.io/npm/dm/gilp.svg?style=flat-square
 [downloads-url]: https://npmjs.org/package/gilp
 [semi-image]: https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square
