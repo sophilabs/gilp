@@ -64,8 +64,8 @@ function html() {
   );
 }
 
-gilp.hook('pre-commit', function() {
-  return gilp.srcFromStaged(['./app/**/*'])
+gilp.hook('pre-commit', function(done) {
+  gilp.srcFromStaged(['./app/**/*'])
     .pipe(js())
     .pipe(py())
     .pipe(html())
@@ -75,10 +75,12 @@ gilp.hook('pre-commit', function() {
     }))
     .pipe(mergeConflict())
     .pipe(mergeConflict.failOnError());
+  done();
 });
 
-gilp.hook('commit-msg', function() {
-  return gilp.srcFromStaged(['**/*'])
+gilp.hook('commit-msg', function(done) {
+  gilp.srcFromStaged(['**/*'])
     .pipe(checkCommit(/^(NA|[0-9]+)\:\s[A-Z0-9].*\.$/gm, 'Invalid commit message format: Example > 4566: First letter in uppercase and end with a period.\n'
-    ));
+  ));
+  done();
 });
