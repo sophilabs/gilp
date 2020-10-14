@@ -13,58 +13,58 @@ const checkBranchName = require('gilp-check-branch-name');
 const checkGrep = require('gulp-check-grep');
 const filenameHint = require('gulp-filename-hint');
 
-function js() {
+function js () {
   var src = filter([
     'app/**/*.js',
     'app/node_modules/**',
     '!app/**/vendor/**',
     '!app/assets/**'
-  ], {restore: true});
+  ], { restore: true });
   return combiner(
     src,
     print(),
-    filenameHint({regExp: /(^|\/)[a-z0-9\.-]+\.js$/}),
+    filenameHint({ regExp: /(^|\/)[a-z0-9.-]+\.js$/ }),
     eslint(),
     eslint.format(),
     eslint.failAfterError(),
-    checkGrep(/console\.log(.(?!noqa$))+$/gm, {message: 'console.log'}),
-    checkGrep(/debugger$(.(?!noqa$))+$/gm, {message: 'debugger'}),
+    checkGrep(/console\.log(.(?!noqa$))+$/gm, { message: 'console.log' }),
+    checkGrep(/debugger$(.(?!noqa$))+$/gm, { message: 'debugger' }),
     checkGrep.failOnError(),
     src.restore
   );
 }
 
-function py() {
-  var src = filter(['app/**/*.py'], {restore: true});
+function py () {
+  var src = filter(['app/**/*.py'], { restore: true });
   return combiner(
     src,
     print(),
-    filenameHint({regExp: /(^|\/)[a-z_0-9]+\.py$/}),
+    filenameHint({ regExp: /(^|\/)[a-z_0-9]+\.py$/ }),
     flake8('.flake8'),
     flake8.failOnError(),
-    checkGrep(/datetime\.now\(\)/g, {message: 'Replace datetime.now by timezone.now'}),
-    checkGrep(/gettext/g, {message: 'Remove i18n'}),
-    checkGrep(/print\((.(?!noqa$))+$/gm, {message: 'print call'}),
+    checkGrep(/datetime\.now\(\)/g, { message: 'Replace datetime.now by timezone.now' }),
+    checkGrep(/gettext/g, { message: 'Remove i18n' }),
+    checkGrep(/print\((.(?!noqa$))+$/gm, { message: 'print call' }),
     checkGrep.failOnError(),
     src.restore
   );
 }
 
-function html() {
-  var src = filter(['app/**/*.html'], {restore: true});
+function html () {
+  var src = filter(['app/**/*.html'], { restore: true });
   return combiner(
     src,
     print(),
-    filenameHint({regExp: /(^|\/)[a-z0-9\-]+\.html$/}),
-    checkGrep(/{\%\s+load\s+i18n\s+\%\}/g, {message: 'Remove i18n'}),
-    checkGrep(/\{\%\s+trans\s+[^%]+/g, {message: 'Remove trans tags'}),
-    checkGrep(/\{\%\s+block\s+[a-z0-9_]*[A-Z\-]+[a-z0-9_]*/g, {message: 'Use snake_case for block tags'}),
+    filenameHint({ regExp: /(^|\/)[a-z0-9-]+\.html$/ }),
+    checkGrep(/{%\s+load\s+i18n\s+%\}/g, { message: 'Remove i18n' }),
+    checkGrep(/\{%\s+trans\s+[^%]+/g, { message: 'Remove trans tags' }),
+    checkGrep(/\{%\s+block\s+[a-z0-9_]*[A-Z-]+[a-z0-9_]*/g, { message: 'Use snake_case for block tags' }),
     checkGrep.failOnError(),
     src.restore
   );
 }
 
-gilp.hook('pre-commit', function() {
+gilp.hook('pre-commit', function () {
   return gilp.srcFromStaged(['./app/**/*'])
     .pipe(js())
     .pipe(py())
@@ -77,8 +77,8 @@ gilp.hook('pre-commit', function() {
     .pipe(mergeConflict.failOnError());
 });
 
-gilp.hook('commit-msg', function() {
+gilp.hook('commit-msg', function () {
   return gilp.srcFromStaged(['**/*'])
-    .pipe(checkCommit(/^(NA|[0-9]+)\:\s[A-Z0-9].*\.$/gm, 'Invalid commit message format: Example > 4566: First letter in uppercase and end with a period.\n'
+    .pipe(checkCommit(/^(NA|[0-9]+):\s[A-Z0-9].*\.$/gm, 'Invalid commit message format: Example > 4566: First letter in uppercase and end with a period.\n'
     ));
 });

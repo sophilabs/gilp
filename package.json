@@ -4,9 +4,10 @@
   "description": "Gulp tasks for git hooks.",
   "main": "lib/index.js",
   "scripts": {
-    "lint": "semistandard *.js",
-    "pretest": "npm run lint",
-    "test": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec $(find ./test -name *.tests.js) && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "lint": "semistandard",
+    "pretest": "npm run lint --scripts-prepend-node-path",
+    "test": "jest",
+    "coverage": "jest --coverage && cat ./tests/coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
@@ -23,22 +24,26 @@
     "url": "https://github.com/sophilabs/gilp/issues"
   },
   "engines": {
-    "node": ">= 4.0"
+    "node": ">= 10.0"
   },
   "homepage": "https://github.com/sophilabs/gilp#readme",
   "dependencies": {
-    "gilp-util": "0.0.8",
-    "gulp-filter": "4.0.0",
-    "gulp-if": "2.0.2",
+    "gilp-util": "0.0.9",
+    "gulp-filter": "6.0.0",
+    "gulp-if": "3.0.0",
     "stream-array": "1.1.2",
-    "strip-bom-buf": "1.0.0",
-    "through2": "2.0.1",
-    "vinyl": "2.0.0"
+    "strip-bom-buf": "2.0.0",
+    "through2": "4.0.2",
+    "vinyl": "2.2.1"
   },
   "devDependencies": {
-    "coveralls": "2.11.9",
-    "istanbul": "0.4.4",
-    "mocha": "2.5.3",
-    "semistandard": "8.0.0"
+    "coveralls": "3.1.0",
+    "jest": "^26.5.3",
+    "semistandard": "*"
+  },
+  "semistandard": {
+    "env": [
+      "jest"
+    ]
   }
 }
