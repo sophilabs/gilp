@@ -1,6 +1,6 @@
 {
   "name": "gilp",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Gulp tasks for git hooks.",
   "main": "lib/index.js",
   "scripts": {
@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/sophilabs/gilp#readme",
   "dependencies": {
-    "gilp-util": "0.0.9",
+    "gilp-util": "0.0.10",
     "gulp-filter": "6.0.0",
     "gulp-if": "3.0.0",
     "stream-array": "1.1.2",

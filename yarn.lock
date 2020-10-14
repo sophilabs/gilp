@@ -1932,10 +1932,10 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-gilp-util@0.0.9:
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/gilp-util/-/gilp-util-0.0.9.tgz#7909e285bb83ddc4d6b192858add7c4228c1ccfb"
-  integrity sha512-5Ig89vzQUSX6L/Q0I3V/4WPVfcy8EjVXza8qJtlAqbTPx4kQJKeqq7miQu+uFlGuPc08IoHU32ReikoyRl+9MQ==
+gilp-util@0.0.10:
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/gilp-util/-/gilp-util-0.0.10.tgz#cd32e922b7e184d30b58ec4d732d136faea55776"
+  integrity sha512-CpGsDFlN+LAnKfzA7fva1oQESP/D3TtaeA76dOrxKE0AQgnWNSR61cCGUrLS/wnVJ6ur8DyUaLjyUOEwKwySOQ==
   dependencies:
     yargs "16.0.3"
 

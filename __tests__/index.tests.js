@@ -1,4 +1,4 @@
-// var gilp = require('../lib');
+// const gilp = require('../lib');
 
 describe('Gilp module', function () {
   it('empty', () => {

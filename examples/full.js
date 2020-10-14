@@ -14,7 +14,7 @@ const checkGrep = require('gulp-check-grep');
 const filenameHint = require('gulp-filename-hint');
 
 function js () {
-  var src = filter([
+  const src = filter([
     'app/**/*.js',
     'app/node_modules/**',
     '!app/**/vendor/**',
@@ -35,7 +35,7 @@ function js () {
 }
 
 function py () {
-  var src = filter(['app/**/*.py'], { restore: true });
+  const src = filter(['app/**/*.py'], { restore: true });
   return combiner(
     src,
     print(),
@@ -51,7 +51,7 @@ function py () {
 }
 
 function html () {
-  var src = filter(['app/**/*.html'], { restore: true });
+  const src = filter(['app/**/*.html'], { restore: true });
   return combiner(
     src,
     print(),

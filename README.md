@@ -48,9 +48,9 @@ You can use any [gulp](https://www.npmjs.com/browse/keyword/gulpplugin) or
 ### Define a hook
 
 ```javascript
-var gulp = require('gulp');
-var eslint = require('gulp-eslint');
-var gilp = require('gilp')(gulp);
+const gulp = require('gulp');
+const eslint = require('gulp-eslint');
+const gilp = require('gilp')(gulp);
 
 gilp.hook('pre-commit', function () {
   return gilp.srcFromStaged(['**/*.js']) 
@@ -95,9 +95,9 @@ following `postinstall` command:
 ### Run a task on the CI to check the commit
 
 ```javascript
-var gulp = require('gulp');
-var eslint = require('gulp-eslint');
-var gilp = require('gilp')(gulp);
+const gulp = require('gulp');
+const eslint = require('gulp-eslint');
+const gilp = require('gilp')(gulp);
 
 gulp.task('check-commit', function () {
   return gilp.srcFromCommit('e3bca34', ['**/*.js']) 
